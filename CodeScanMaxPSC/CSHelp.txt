@@ -1,0 +1,143 @@
+9
+#0 CodeScanMax by Robert Rayment July 2004
+#1 Overview
+#2 Menu items
+#3 Squash and Strip
+#4 Find & Find Next
+#5 RTB Options
+#6 Saving, Copying & Printing
+#7 Limitations
+#8 References
+#0 CodeScanMax by Robert Rayment July 2004
+
+#1 Overview
+ 
+   This program is intended to give the number of declarations
+   (Decs) and procedures (Procs) used in a project.  Also to
+   display some items within Procs and a variety of unused
+   items.  To be most useful the exe can be placed on the
+   Office toolbar or the Taskbar.  It can then analyse the
+   current project provided it is saved to disk. It is
+   non-intrusive  A second use is to copy/paste code from
+   any other project while in the IDE.
+   
+   Files are loaded from a *.vbp file. Either from a
+   load dialog, CSInfo.txt or dropping a vbp file
+   onto the exe.
+   
+   Only the files with extensions:-
+   .frm, .bas, .cls, .ctl, .dsr & .pag
+   are looked at.  The names will appear in the left-hand
+   listbox.  Selecting a file there displays the declarations
+   (Decs) and procedure (Procs) names in the top-right list
+   box and the code, as written, in the RTB richtextbox below.
+   
+   The various menu items etc can then be tried out.
+   On exit the current vbp filespec is saved to CSInfo.txt
+   in the app folder.
+   
+#2 Menu items
+ 
+   Hopefully these are fairly self-explanatory.
+   
+   [Stats]       Select module or whole project giving the
+                 number of Decs and Procs
+   
+   [List All A]  Shows Decs & Procs for the whole project.
+   
+   [List All B]  A selection of Proc details.  The last in
+                 this menu list (List Non-Control Proc Callers)
+                 shows where the various Procs are called from.
+   
+   [Unused A]    Unused items from all the declaration
+                 sections.
+   
+   [Unused B]    Unused items in Procs apart from the last
+                 showing unused non-control procs.
+                 
+#3 Squash and Strip
+ 
+        This is done by the 4 large buttons on the left.
+        For a particular file or the whole project, Squash
+        removes all unecessary characters while, for
+        individually selected files, is still a viable vb file.
+        Strip removes the controls description and attributes
+        header.  Only useful to shorten the text in the RTB.
+        
+#4 Find & Find Next
+ 
+        First, selecting a Dec or Proc item in Dec & Procs
+        listbox highlights the item in the RTB.
+        Second, the Find button brings up a combobox in which
+        a string can be entered or pasted for searching.
+        
+#5 RTB Options
+
+        The text in the RTB can be changed as Font Size, Bold,
+        Underline or colored.  Coloring can be stopped.
+        EG 28500=lines takes ~45 sec on a 1.8 GHz PC.
+        Line numbers can be toggled on/off.  Horizontal
+        scrollbars switched on/off.  Selected text highlighted
+        and RTB maximized on a separate window.  Note that the
+        maximized RTB retains it's contents unless closed.  So
+        there can be two different displays.
+
+#6 Saving, Copying & Printing
+ 
+        The RTB can be saved at any point, but only as a *.txt
+        file.  It takes a long time before I would trust
+        overwriting project files!
+        Selections from the RTB can be copied to the clipboard
+        in the usual way.
+        All or a selection of the RTB text can also be printed.
+        NB Before printing take note of number of lines -
+           ~70 lines/page !!
+        
+#7 Limitations
+ 
+        Assumes variables are defined
+
+        Not done:-
+        Unused Controls
+        Unused Modules
+        Unused Control Procedures
+
+        Only checks vars as declared eg var$ can be used as
+        var without $ then NOT checked or var As String can be
+        used as var$ also NOT checked.
+ 
+        Unused only based on > 1 occurrence of item, so gives
+        guidance only!  Also some unused vars need to be kept
+        eg Types for APIs.
+
+        If there is a Private Sub & a Public Sub in a different
+        module, both unused but with exactly the same name, then
+        the Private Sub will be marked unused but NOT the Public
+        Sub.
+
+        Also due to the complexity allowed for writing vb files
+        parsing is a bit of a nightmare and the likelyhood of
+        getting it all right first time, remote!!  My experience
+        with classes and user controls is limited and with dsr 
+        and pag files non-existent - so items like Class
+        Initialize, Dsr Initiates, some RaiseEvents which have
+        partial call names, will be lumped with UNUSED 
+        (Class/Dsr/REv IT).
+        
+#8 References
+ 
+        Code Fixer v2.2.9     Roger Gilchrist CodeId=53297
+        Deeplook v4.7         Dean Camera     CodeId=54836
+        Code Statics/.. v4.3  E O'Sullivan    CodeID=39149
+        or later versions.
+        
+        It's 'horses for courses' CodeScan suits me but try
+        these others if you haven't already, they may be closer
+        to what you want.
+        
+        RichTextBox Coloring  Will Barden  PSC CodeId=39824
+        Hide/Show Scrollbars  Andrew Baker  @ www.vbuser.com
+        Back Highlighting     buggy  PSC CodeId=43509
+
+
+        
